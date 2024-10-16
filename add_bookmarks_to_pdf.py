@@ -22,10 +22,10 @@ def read_bookmarks(file_path, first_page_number):
         for line in file:
             parts = line.strip().split(',')
             hierarchy = parts[0].strip()
-            bookmark_name = parts[1].strip()
-            page_number = int(parts[2].strip()) - 1 + (first_page_number-1) # Shift to first page number and convert to zero-based index
-            bookmarks.append((hierarchy, bookmark_name, page_number))
-            print(f"Read bookmark: hierarchy: {hierarchy}, name: {bookmark_name}, page: {page_number}")
+            name = parts[1].strip()
+            page = int(parts[2].strip()) - 1 + (first_page_number-1) # Shift to first page number and convert to zero-based index
+            bookmarks.append((hierarchy, name, page))
+            print(f"Read bookmark: hierarchy: {hierarchy}, name: {name}, page: {page}")
     print(f"Total bookmarks read: {len(bookmarks)}")
     return bookmarks
 
