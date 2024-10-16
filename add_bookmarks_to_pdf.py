@@ -40,12 +40,13 @@ def add_bookmarks_to_pdf(pdf_path, bookmarks):
     pdf_reader = PyPDF2.PdfReader(pdf_path)
     pdf_writer = PyPDF2.PdfWriter()
 
+    print("Copying pages from original PDF (This may take some time for large PDFs)...")
     for page_num in range(len(pdf_reader.pages)):
         pdf_writer.add_page(pdf_reader.pages[page_num])
 
     bookmark_dicts = []
     for hierarchy, name, page in bookmarks:
-        print(f"Adding bookmark: {name} at page {page + 1} with hierarchy {hierarchy}")
+        print(f"Adding bookmark: hierarchy: {hierarchy}, name: {name}, page: {page}")
 
         levels = hierarchy.split('.')
         if len(levels) == 1:
